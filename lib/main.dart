@@ -34,7 +34,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> fetchCatData() async {
     String apiKey = 'live_qR1WucNCBU6OyNRCQfAgWXFQP2nSbqvejRu18ILU1XANWSDjSR0pshgdwv8QoBcQ'; // Replace with your actual API key
-    String apiUrl = 'https://api.thecatapi.com/v1/breeds';
+    String apiUrl = 'https://api.thecatapi.com/v1/images/search?limit=10';
+
 
     Dio dio = Dio();
     dio.options.headers['x-api-key'] = apiKey;
@@ -46,6 +47,12 @@ class _MyHomePageState extends State<MyHomePage> {
       setState(() {
         catData = List<Map<String, dynamic>>.from(responseData);
       });
+      for (var data in catData){
+        print('$data.id');
+        print('$data.description');
+        print('$data.url');
+      }
+
     } catch (error) {
       // Handle errors
       print('Error: $error');
@@ -65,10 +72,10 @@ class _MyHomePageState extends State<MyHomePage> {
           : ListView.builder(
         itemCount: catData.length,
         itemBuilder: (context, index) {
-          final breed = catData[index];
+          final cat = catData[index];
           return ListTile(
-            title: Text(breed['name']),
-            subtitle: Text(breed['description']),
+            title: Text('Cat Image'),
+            subtitle: Image.network(cat['url']),
           );
         },
       ),
