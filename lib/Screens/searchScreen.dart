@@ -1,50 +1,50 @@
 import 'package:flutter/material.dart';
 
+class ImagePage extends StatelessWidget {
+  final List<Map<String, dynamic>> imageData;
 
-class Searchscreen extends StatelessWidget {
+  ImagePage(this.imageData);
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Search Bar and Icons'),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              // Search Bar
-              TextField(
-                decoration: InputDecoration(
-                  labelText: 'Search',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              SizedBox(height: 16.0), // Spacer
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Images'),
+      ),
+      body: ListView.builder(
+        itemCount: imageData.length,
+        itemBuilder: (context, index) {
+          final cat = imageData[index];
+          return ListTile(
+            title: Text('Cat Image'),
+            subtitle: Image.network(cat['url']),
+          );
+        },
+      ),
+    );
+  }
+}
 
-              // Icons in Row
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  // GIF Icon
-                  Image.asset(
-                    'assets/loading_icon.gif',
-                    height: 50.0,
-                    width: 50.0,
-                  ),
+class GifPage extends StatelessWidget {
+  final List<Map<String, dynamic>> gifData;
 
-                  // Image Icon
-                  Icon(
-                    Icons.image,
-                    size: 50.0,
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
+  GifPage(this.gifData);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('GIFs'),
+      ),
+      body: ListView.builder(
+        itemCount: gifData.length,
+        itemBuilder: (context, index) {
+          final cat = gifData[index];
+          return ListTile(
+            title: Text('Cat GIF'),
+            subtitle: Image.network(cat['url']),
+          );
+        },
       ),
     );
   }
