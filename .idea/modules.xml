@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/sananthan_task_fexcon.iml" filepath="$PROJECT_DIR$/sananthan_task_fexcon.iml" />
-      <module fileurl="file://$PROJECT_DIR$/android/sananthan_task_fexcon_android.iml" filepath="$PROJECT_DIR$/android/sananthan_task_fexcon_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fexcon/android/sananthan_task_fexcon_android.iml" filepath="$PROJECT_DIR$/fexcon/android/sananthan_task_fexcon_android.iml" />
     </modules>
   </component>
 </project>
